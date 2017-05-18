@@ -152,7 +152,7 @@
 > 앱의 main run loop는 모든 사용자 관련 이벤트를 처리합니다. UIApplication 객체는 실행시 main run loop를 설정하고, 이를 사용해 이벤트를 처리하고 UI 업데이트를 처리합니다. 이름에서 알 수 있듯이, main run loop는 앱의 main thread에서 실행되며, 사용자 이벤트가 입력되면 순차적으로 처리합니다.
 
 <center>
-<img src="https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Art/event_draw_cycle_a_2x.png" width="400px"/>
+<img src="https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Art/event_draw_cycle_a_2x.png" width="600px"/>
 </center>
 
 
@@ -171,7 +171,7 @@
 	* Suspended : 백그라운드에 있는 앱이 더이상 코드를 실행하지 않는 정지된 상태 
 
 <center>
-<img src="https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Art/high_level_flow_2x.png" width="300px"/>
+<img src="https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Art/high_level_flow_2x.png" width="600px"/>
 </center>
 
 
@@ -337,7 +337,7 @@
 * 만약 앱에 `NSFileProtectionComplete` 옵션으로 보호된 파일이 있다면, 화면이 잠겨있는동안 해당 파일에 접근하지 못하도록 `applicationWillResignActive:` 메소드에서 해당 파일에 대한 참조를 닫아줘야합니다.
 
 <center>
-<img src="https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Art/app_interruptions_2x.png" width="400px"/>
+<img src="https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Art/app_interruptions_2x.png" width="600px"/>
 </center>
 
 
@@ -393,7 +393,7 @@
 * 대부분의 앱은 `applicationDidEnterBackground:` 메소드가 호출 되고, 잠시후 일시 중지 상태로 전환됩니다.  
 
 <center>
-<img src="https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Art/app_bg_life_cycle_2x.png" width="450px"/>
+<img src="https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Art/app_bg_life_cycle_2x.png" width="600px"/>
 </center>
 
 #### Prepare for the App Snapshot
@@ -495,7 +495,7 @@
 *  몇몇 `ViewContrller`는 앱의 `main storyboard`에서 자동으로 로드되지만 `push`되거나 `present`되는 `ViewController`들은 접근이 불가능 하기 때문에 `restoreation idientifier`를 지정해줘야합니다.
 
 <center>
-<img src="https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Art/state_vc_hierarchy_preserve_2x.png" width="450px"/>
+<img src="https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Art/state_vc_hierarchy_preserve_2x.png" width="600px"/>
 </center>
 
 * 보존하려는 `view controller`에 대해 추후 어떤 방식으로 복원될지 결정해야합니다. `UIKit`는 두가지 방식을 제공합니다. App delegate를 이용해 재구성하거나 view controller에 `restoration class` 를 구현하는 방식이 있습니다. 각 방식에 대한 사용팁은 아래와 같습니다.
