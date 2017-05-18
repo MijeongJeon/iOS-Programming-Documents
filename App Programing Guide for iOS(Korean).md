@@ -337,8 +337,7 @@
 * 만약 앱에 `NSFileProtectionComplete` 옵션으로 보호된 파일이 있다면, 화면이 잠겨있는동안 해당 파일에 접근하지 못하도록 `applicationWillResignActive:` 메소드에서 해당 파일에 대한 참조를 닫아줘야합니다.
 
 <center>
-<img src="https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Art/app_interruptions_2x.png
-" width="400px"/>
+<img src="https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Art/app_interruptions_2x.png" width="400px"/>
 </center>
 
 
