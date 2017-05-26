@@ -8,9 +8,7 @@
 ### iOS 프로그래밍과 관련된 애플 공식 문서를 한국어로 번역해 놓았습니다.
 * 천천히, 조금씩 제가 궁금한 부분 부터 올려보겠습니다.
 * 생략된 내용과 코드가 많으니 자세하고 정확한 내용은 각 글의 원문을 참고해주세요. 
-* 그저 개발을 더 잘하려고 싶어 공부하다 올리게 되었으니 내용이 비루하고 틀렸어도 돌은 던지지 말아주세요. 
-
-### 2017.05.18. iOS Programming Guide
+* 그저 개발을 더 잘하려고 싶어 공부하다 올리게 되었으니 많이 부족하고 오역이 있어도 돌은 던지지 말아주세요. 
 
 # iOS 앱 프로그래밍 가이드 번역문
 
@@ -21,24 +19,24 @@
 > 문서의 목적 및 용도 설명
 
 ### [2. Expected App Behaviors](#앱행동)
-> 앱 기본 구동에 필요한 리소스, 사용자 개인정보 보호, 앱 지역화(현지화)에 관한 내용
+> 앱 기본 구동 및 배포에 필요한 리소스, 사용자 개인정보 보호, 앱 지역화(현지화)에 관한 내용
 
 * Providing the Required Resources
 * Supporting User Privacy
 * Internationalizing Your App
 
 ### [3. The App Life Cycle](#앱생명주기)
-> iOS 기본 작동 구조 및 앱 생명 주기와 각 상태, 각 주기에서 시행해야하는 작업내용과 작업시점에 관한 내용
+> iOS 앱 기본 작동 구조 및 앱 생명 주기, 각 주기에서 시행하는 작업내용과 작업시점에 관한 내용
 
 * The Main Function
 * The Structure of an App
 * The Main Run Loop
-* Excution States for Apps
+* Execution States for Apps
 * App Termination
 * Threads and Concurrency
 
 ### [4. Background Excution](#백그라운드실행)
-> 백그라운드 상태에서 작업 실시하기, 백그라운 상태로 전환될때 작업 마무리하기, 백그라운 상태에서 되돌아오기 등 백그라운드 상태에서 이루어지는 작업에 관련된 내용
+>  백그라운드 상태로 전환될때 작업 마무리하기, 백그라운드 상태에서 되돌아오기 등 백그라운드 상태와 관련된 내용
 
 * Executing Finite-Length Tasks
 * Downloading Content in the Background
@@ -52,11 +50,11 @@
 > 실행, 구동, 백그라운드, 종료, 일시 정지 등과 같은 앱의 실행 상태 변화에 따른 역할과 관련 메소드 사용법에 관한 내용
 
 * What to Do at Launch Time
-* What to Do When Your App Is Interrupted Temporily
+* What to Do When Your App Is Interrupted Temporally
 * What to Do When Your App Enters the Background
 
 ### [6. Strategies for Handling App Features](#앱기능)
-> 개인정보 활용, 등급제한, 여러 iOS 버전에 대응하기, 앱 상태 보존/복원, VoIP 활용 등 여러가지 앱에서 공통적으로 사용되는 기능에 대한 소개 및 사용법에 관한 내용
+> 개인정보 활용, 등급제한, 여러 iOS 버전에 대응하기, 앱 상태 보존/복원, VoIP 활용 등 여러가지 앱에서 사용되는 기능에 대한 소개 및 사용법에 관한 내용
 
 * Privacy Strategies
 * Respecting Restrictions
@@ -65,7 +63,7 @@
 * Tips for Developing a VoIP App
 
 ### [7. Inter-App Communication](#앱통신)
->  iOS에서 이루어지는 앱간의 간접적 통신 방법(AirDrop, URLs)에 대한 소개와 데이터 송/수신 방법
+>  iOS에서 이루어지는 앱간의 통신 방법(AirDrop, URLs)에 대한 소개와 데이터 송/수신 방법
 
 * Supporting AirDrop
 * Using URL Schemes to Communicate with Apps
@@ -81,6 +79,7 @@
 * Make App Backups More Efficient
 * Move Word off the Main Thread
 
+---
 
 <a name = "소개"></a>
 ## [1. Introduction](https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007072-CH1-SW1)
@@ -92,7 +91,7 @@
 
 <a name = "앱행동"></a>
 ## [2. Expected App Behaviors](https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/ExpectedAppBehaviors/ExpectedAppBehaviors.html#//apple_ref/doc/uid/TP40007072-CH3-SW2)
->Xcode를 이용해 제작된 모든 프로젝트는 즉각 장비에서 구동 될 수 있지만, 그렇다고 App Store에 등록될 준비가 완료된 것은 아닙니다. 모든 앱은 사용자에게 좋은 사용 경험을 전달하기 위해 어느 정도의 시스템 설정이 필요합니다. 앱 아이콘 제공에서부터 어떻게 정보를 표시하고 사용하게 할 것인지에 대한 설정에 대해 알아봅니다.
+>Xcode를 이용해 제작된 모든 프로젝트는 즉각 장비에서 구동 될 수 있지만, 그렇다고 App Store에 등록될 준비가 완료된 것은 아닙니다. 모든 앱은 사용자에게 좋은 사용 경험(UX)을 전달하기 위해 어느 정도의 시스템 설정이 필요합니다. 이번 섹션에서는 앱 설계 초기 단계에서 고려해야할 앱의 기본 형태 및 구동에 대해 알아봅니다.
  
 ### Providing the Requred Resources
 >모든 어플은 아래의 리소스 및 메타데이터를 포함해야합니다.
@@ -103,11 +102,11 @@
 * 한개 이상의 앱 런칭 이미지
 
 #### The App Bundle
->iOS 앱을 생성하면 Xcode는 앱을 _bundle_로 묶는데, _bundle_은 앱과 관련된 자원을 그룹화해놓은 파일 시스템의 디렉토리입니다. _bundle_에는 앱 실행 파일, 앱 아이콘, 이지미 파일 및 현지화(localize)된 콘텐츠등의 리소스 파일이 포함되어있습니다. 
+>iOS 앱을 생성하게되면 Xcode는 앱을 *bundle*로 묶는데,  *bundle*은 앱과 관련된 자원을 그룹화해놓은 파일 시스템의 디렉토리입니다. *bundle*에는 앱 실행 파일, 앱 아이콘, 이지미 파일 및 현지화(localize)된 콘텐츠등의 리소스 파일이 포함되어있습니다. 
 
-* **정보 속성 목록 파일(Info.plist)** : Info.plist 파일은 앱 구성에 관한 중요한 정보가 포함된 구조화된 파일입니다. App Store 및 iOS에서 앱의 기능을 확인하는데 사용되며, 모든 앱에 Info.plist. 파일이 포함되어야합니다.
-	* 기본으로 제공되는 Info.plist 파일에는 필수항목에 대한 기본값이 설정되어있으며, 특정 기능을 위한 항목값 변경 및 항목 추가가 가능합니다.
-	* Wi-Fi 연결, 맞춤 URL 스키마 지원, 사진 앨범 접근등을 위해서는 Info.plist에 적절한 키를 설정해줘야합니다.
+* **정보 속성 목록 파일(Info.plist)** : Info.plist 파일은 앱 구성에 관한 중요한 정보가 포함된 구조화된 파일입니다. App Store 및 iOS에서 앱의 기능을 확인하는데 사용되며, 모든 앱이 Info.plist. 파일을 포함해야합니다.
+	* 기본으로 제공되는 Info.plist 파일에는 필수항목에 대한 기본값이 설정되어있으며, 특정 기능을 위한 항목 추가/변경이 가능합니다.
+	* Wi-Fi 연결, custom URL 스키마 지원, 사진 앨범 접근등을 위해서는 Info.plist에 적절한 키를 설정해줘야합니다.
 	* Info.plist의 다양한 키와 값에 대해 자세히 알아보려면 [About Info.plist Keys and Valuse](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009247)를 참고하세요.
 
 * **앱 아이콘** : 모든 앱은 기기의 홈 화면과 App Store에 표시할 아이콘을 제공해야 합니다. 
@@ -147,17 +146,21 @@
 >앱은 작성된 코드와 시스템 프레임 워크간의 정교한 상호작용입니다. 시스템 프레임 워크는 모든 앱의 실행에 필요한 기본 인프라를 제공하며, 개발자는 앱에 어울리는 모양과 느낌을 코드로 구현합니다. 이 둘의 효과적인 상호작용을 위해 iOS 작동원리에 대한 이해가 필요합니다. 
 
 ### The Main Function
-> 모든 C 기반의 앱과 마찬가지로, iOS 앱의 진입점 역시 main 함수 입니다. iOS에서의 다른 점은 main 함수를 직접 작성하지 않는다는 점입니다. Xcode가 기본으로 제공해주며, 제공해주는 기본 main 함수를 수정해서는 안됩니다.
+> 모든 C 기반의 프로그램과 마찬가지로, iOS 앱의 진입점 역시 main 함수 입니다. iOS에서의 다른 점은 main 함수를 직접 작성하지 않는다는 점입니다. Xcode가 기본 main 함수를 제공해주며, 제공된 main 함수를 수정해서는 안됩니다.
 
-* main 함수는 UIKit 프레임 워크에 제어권을 넘겨주며, UIApplicationMain 함수가 앱의 핵심 객체를 만들며, 스토리 보드로 UI를 로드하고, 초기 설정을 수행하는 코드를 호출합니다.
-* 개발자가 제공해야하는 부분은 스토리 부분과 초기화 코드입니다.
+* main 함수는 UIKit 프레임워크에 제어권한을 넘겨줍니다. UIApplicationMain 함수는 앱의 핵심 객체를 만들고, 스토리 보드 파일로부터 UI를 로드하고, 초기 설정을 위한 코드를 호출하고, 앱의 실행 루프를 동작시킵니다.
+* 개발자가 제공해야하는 부분은 스토리 보드파일과 사용자 지정 초기화 코드입니다.
 
 ---
 
 ### The Structure of an App
->  앱을 시작하는 동안 UIApplicationMain 함수는 핵심 객체를 설정하고, 앱 실행을 준비합니다. 모든 iOS앱의 핵심은 UIApplication 객체로, 시스템과 응용 프로그램 객체 사이의 상호작용을 원활하게 하는 역할을 합니다. 
+>  앱을 시작하는 동안 UIApplicationMain 함수는 핵심 객체를 설정하고, 앱 실행을 준비합니다. UIApplication 객체는 모든 iOS 앱의 핵심으로, 시스템과 앱 객체 사이의 상호작용을 원활하게 하는 역할을 합니다. 
 
-* iOS 앱은 Model View Controller 아키텍처(MVC 패턴) 를 사용합니다. MVC 패턴은 앱의 데이터와 로직 그리고 시각적 화면을 구분합니다. 이러한 패턴은 화면 크기가 다른 다양한 장치에서 앱을 구동하는데 매우 중요한 역할을 합니다.
+* iOS 앱은 Model View Controller 아키텍처(MVC 패턴)를 사용합니다. MVC 패턴은 앱의 데이터 부분(혹은 비지니즈 로직)과 이를 어떻게 보여줄지에 대한 부분을 분리합니다. 이러한 패턴은 화면 크기가 다른 다양한 장치에서 앱을 구동하는데 매우 중요한 역할을 합니다.
+
+<center>
+<img src="https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Art/core_objects_2x.png" width="600px"/>
+</center>
 
 ---
 
@@ -219,7 +222,7 @@
 
 <a name = "백그라운드실행"></a>
 ## [4. Background Execution](https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/BackgroundExecution/BackgroundExecution.html#//apple_ref/doc/uid/TP40007072-CH4-SW1)
-> 사용자가 앱을 사용하지 않을 경우 시스템은 앱을 백그라운드 상태로 전환시킵니다. 일반적으로 백그라운드 상태는 정지 상태로 가는 길입니다. 앱을 정지 시키는 일을 배터리 수명을 향상 시키기는 일이며, 다른 앱이 foreground에서 실행 될수 있는 리소스를 제공해줍니다. 하지만 모든앱들이 백그라운드에서 정지되는 것은 아닙니다. 예를 들어 하이킹 앱은 백그라운드에서도 사용자의 위치를 추적해야하며, 오디오 앱은 잠금화면에서도 계속 음악을 재생할 수 있어야 합니다. 이렇게 백그라운드에서 앱을 실행하는 것이 필요하다고  판단되면 iOS는 배터리를 많이 소모하지 않고 효율적으로 수행 할수 있도록 아래와 같은 기술을 제공합니다.
+> 사용자가 앱을 사용하지 않을 경우 시스템은 앱을 백그라운드 상태로 전환시킵니다. 일반적으로 백그라운드 상태는 정지 상태(suspended)로 가는 길입니다. 앱을 정지 시키는 일을 배터리 수명을 향상 시키기는 일이며, 다른 앱이 foreground에서 실행 될수 있는 리소스를 제공해줍니다. 하지만 모든앱이 백그라운드에서 정지되는 것은 아닙니다. 예를 들어 하이킹 앱은 백그라운드에서도 사용자의 위치를 추적해야하며, 오디오 앱은 잠금화면에서도 계속 음악을 재생할 수 있어야 합니다. 이렇게 백그라운드에서 앱을 실행하는 것이 필요하다고  판단되면 iOS는 배터리를 많이 소모하지 않고 효율적으로 수행 할수 있도록 다음과 같은 기술을 제공합니다.
 
 * foreground에서 짧은 작업을 하는 앱은 백그라운드로 전환될때 해당 작업을 완료할 시간을 요청할 수 있습니다.
 * foreground에서 다운로드를 시작하는 앱은 다운로드 관리를 시스템에 전할 할 수 있으므로, 다운로드가 되는 동안 앱이 중지되거나 종료되지 않습니다.
@@ -264,7 +267,7 @@
 ---
 
 ### Understanding When Your App Gets Launched into the Background
->백그라운드 실행을 지원하는 앱은 이벤트 처리를 위해 시스템에 의해 재실행 될 수 있습니다. 사용자에 의해 강제로 앱이 종료되지 않은 이상 다음과 같은 이벤트 중 하나가 발생하면 시스템이 임의로 앱을 재실행하게됩니다.
+>백그라운드 실행을 지원하는 경우, 시스템이 이벤트 처리를 위해 앱을 재실행 시킬 수 있습니다. 사용자에 의해 강제로 앱이 종료되지 않은 이상 다음과 같은 이벤트 중 하나가 발생하면 시스템이 임의로 앱을 재실행하게됩니다.
 
 	* 위치 앱 : 앱에 지정된 특정 지역에 들어왔음을 인지했을때
 	* 오디오 앱 : 일부 데이터를 처리하기 위해(오디오 재생 혹은 마이크 사용)
@@ -278,7 +281,7 @@
 
 
 ### Being a Responsible Background App
->Foreground 상태의 앱은 시스템 리소스 및 하드웨어 사용과 관련해 항상 백그라운드 상태의 앱보다 우선시 됩니다. 백그라운드에서 실행되는 앱은 이러한 불균등을 대비하여 백그라운드에서 실행될 동작을 제어해야합니다. 특히 백그라운드로 이동하는 앱은 다음 가이드를 준수해야 합니다.
+>Foreground 상태의 앱은 시스템 리소스 및 하드웨어 사용과 관련해 항상 백그라운드 상태의 앱보다 우선시 됩니다. 백그라운드에서 실행되는 앱은 이러한 불균등을 대비하여 백그라운드에서 실행될 동작을 준비해야합니다. 특히 백그라운드로 이동하는 앱은 다음 가이드를 준수해야 합니다.
 
 * **코드에서 OpenGL ES를 호출하지 마십시오.** 백그라운드에서 실행되는 동안 EAGLContext객체를 만들거나 OpenGL ES 드로잉 명령을 실행하면 앱은 즉시 종료됩니다. 백그라운드에서 OpenGL ES를 처리하는 방법에 대해서는 [OpenGL Programming Guide](https://developer.apple.com/library/content/documentation/3DDrawing/Conceptual/OpenGLES_ProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008793)를 참고하세요.
 * **앱이 정지 되기 전에 Bonjour 관련 서비스를 취소하십시오.**  앱이 백그라운드로 이동해 정지되기 전에 Bonjour를 취소하고 네트워크 서비스와 관련된 수신 대기 소켓을 닫아야 합니다. 만약 Bounjour 서비스를 직접 취소하지 않으면 시스템이 서비스를 종료시키게됩니다.
@@ -452,7 +455,7 @@
 ---
 
 ### Respecting Restrictions
-> 사용자는 엡에 사용되는 미디어의 등급을 지정하여 제한 설정할 수 있습니다. 만약 앱이 미디어를 포함하거나 수정하는 경우, 제한 설정을 확인하고 그 변경사항에 맞는 응답을 해야합니다.
+> 사용자는 앱에 사용되는 미디어의 등급을 지정하여 제한 설정할 수 있습니다. 만약 앱이 미디어를 포함하거나 수정하는 경우, 제한 설정을 확인하고 그 변경사항에 맞는 응답을 해야합니다.
 
 * 제한 설정 값을 가져오려면 `standardUserDefaults` 객체의 `objectForKey`메서드를 사용해 각 값을  확인 할 수 있습니다.
 	* `com.apple.content-rating.ExplicitBooksAllowed`
@@ -684,9 +687,9 @@
 
 * **메모리 릭(leak) 제거** Instruments를 사용하여 실제 디바이스와 시뮬레이터에서 메모리 릭을 추적하십시오.
 * **리소스 파일 줄이기** 리소스 파일을 가능한 작게 만들기 위해 모든 이미지 파일을 압축하십시오. (iOS 앱 기본 이미지 포맷인 PNG 이미지를 압축하려면 pngcrush 도구를 사용하십시오.)
-* **속성 목록 파일 줄이기** `NSPropertyListSerialization` 클래스를 사용하여 속성 목록을 이진법으로 작성할 수 있습니다.
+* **속성 목록 파일 줄이기** NSPropertyListSerialization` 클래스를 사용하여 속성 목록을 이진법으로 작성할 수 있습니다.
 * **대규모 데이터 관리** 대규모 데이터를 관리하는 경우 `Core Data` 혹은 `SQLite`를 사용하십시오. 이는 전체 세트를 한번에 메모리에 저장하지 않고 대용량 데이터를 효율적으로 관리 할수 있는 방법을 제공합니다.
-* **느린 리소스 로드** 실제로 필요할 때까지 리소스 파일을 로드하지 마십시오. 리소스 파일을 미리 가져오는 것은 시간을 절약 시키는 방법처럼 보일 수 있지만, 결국은 앱의 속도를 저하시키게 됩니다. 
+* **리소스 로드 시점** 실제로 필요할 때까지 리소스 파일을 로드하지 마십시오. 리소스 파일을 미리 가져오는 것은 시간을 절약 시키는 방법처럼 보일 수 있지만, 결국은 앱의 속도를 저하시키게 됩니다. 
 
 #### Allocate Memory Wisely
 > 다음은 현명하게 메모리를 할당할 수 있는 팁입니다.
@@ -766,9 +769,8 @@
 	* CGD, operation object, thread에 관한 자세한 정보는 [Concurrency Programming Guide](https://developer.apple.com/library/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008091)를 참고하세요.
 
 ---
----
 
 * 원문에서 중복되는 내용이나 예제 코드는 생략했습니다. 정확한 내용은 [원문](https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Introduction/Introduction.html)을 확인해주세요.
-* **번역: Mijeong Jeon(ninevinentg@gmail.com)**
+* **번역: 전미정**
 
 [**위로가기**](#위로가기)
