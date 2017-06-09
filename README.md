@@ -5,7 +5,7 @@
 ![Language](https://img.shields.io/badge/Language-Swift-red.svg)
 ![Language](https://img.shields.io/badge/language-Objective--C-green.svg)
 
-### iOS 프로그래밍과 관련된 애플 공식 문서를 한국어로 번역해 놓았습니다.
+### iOS 프로그래밍과 관련된 영어 문서 및 사이트를 한국어로 번역해 놓았습니다.
 * 천천히, 조금씩 제가 궁금한 부분 부터 올려보겠습니다.
 * 생략된 내용과 코드가 많으니 자세하고 정확한 내용은 각 글의 원문을 참고해주세요. 
 * 그저 개발을 더 잘하려고 싶어 공부하다 올리게 되었으니 많이 부족하고 오역이 있어도 돌은 던지지 말아주세요. 
