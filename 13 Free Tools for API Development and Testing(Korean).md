@@ -111,6 +111,6 @@
 	* [Create a Mock REST API in Seconds for Prototyping your Frontend](https://coligo.io/create-mock-rest-api-with-json-server/)
 
 	
-> 본 문서는 [[원문] 10 Free Tools for API Design, Development and Testing](http://www.infoworld.com/article/3060731/apis/10-free-tools-for-api-design-development-and-testing.html#slide1)의 번역문을 바탕으로, 관련된 내용을 추가 조사하여 구성하였습니다.
+> 본 문서는 [[원문] 10 Free Tools for API Design, Development and Testing](http://www.infoworld.com/article/3060731/apis/10-free-tools-for-api-design-development-and-testing.html#slide1)을 바탕으로, 관련된 내용을 추가 조사하여 구성하였습니다.
 
 [위로가기](#위)
