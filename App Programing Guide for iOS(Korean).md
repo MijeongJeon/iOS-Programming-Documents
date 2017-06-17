@@ -206,7 +206,7 @@
 
 * GCD를 이용하면 수행하고 싶은 작업과, 작업의 순서를 정할 수 있지만, 시스템이 CPU에서 작업을 가장 효과적으로 수행할 수 있는 방법을 결정 할 수 있도록 하는 것이 전반적인 성능을 향상시키고, 코드를 단순화 시킬 수 있습니다.
 * Thread와 concurrncy(동시성)를 사용할때 다음 사항을 고려하세요.
-	* View, Core Animation 그리고 UIKit 클래스와 고나련된 작업은 main thread에서 실행되어야 합니다. 
+	* View, Core Animation 그리고 UIKit 클래스와 관련된 작업은 main thread에서 실행되어야 합니다. 
 	* 오래 걸리는 작업은 백그라운드 스레드에서 수행해야합니다. 네트워크 작업을 포함하거나, 파일에 접근하거나, 많은 양의 데이터를 처리할 때는 GCD를 이용하여 비동기로 수행해야합니다.
 	*  GCD 및 operation object를 사용한 작업 방법에 대해서는 [Concurrency Programming Guide](https://developer.apple.com/library/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008091)를 참고하세요.
 
@@ -219,7 +219,7 @@
 * 특정 유형의 작업을 지원하기 위해 백그라운드에서 실행하는 앱은 하나 이상의 백그라운드 실행 모드에 대한 지원을 선언 할 수 있습니다.
 
 ### Executing Finite-Length Tasks
-> 백그라운드로 이동한 앱이 작업 중인 일을 완료하기 위해 추가적인 시간이 필요한경 경우, `UIApplication` 객체의 `beginBackgroundTaskWithName : expirationHandler :` 또는 `beginBackgroundTaskWithExpirationHandler :` 메소드를 호출하여 작업이 완료되기 까지의 추가 시간을 요청 할수 있습니다. 위 메소드 중 하나를 하나를 호출하면 앱은 일시적으로 중지가 지연되고, 작업을 마저 실행 할수 있습니다. 작업이 끝난 앱은 `endBackgroundTask:`메소드를 호출하여 시스템에 작업을 마쳤음을 알립니다.
+> 백그라운드로 이동한 앱이 작업 중인 일을 완료하기 위해 추가적인 시간이 필요한 경우, `UIApplication` 객체의 `beginBackgroundTaskWithName : expirationHandler :` 또는 `beginBackgroundTaskWithExpirationHandler :` 메소드를 호출하여 작업이 완료되기 까지의 추가 시간을 요청 할수 있습니다. 위 메소드 중 하나를 하나를 호출하면 앱은 일시적으로 중지가 지연되고, 작업을 마저 실행 할수 있습니다. 작업이 끝난 앱은 `endBackgroundTask:`메소드를 호출하여 시스템에 작업을 마쳤음을 알립니다.
 
 * `expirationHandler :` 에 종료하기 전에 수행해야하는 코드를 추가 할 수 있지만, 이때 실행되는 작업이 너무 오래 걸리지 않아야합니다. 
 * 작업을 처리하는데 남은 시간을 알고 싶다면 `UIApplication`의 `backgroundTimeRemaining` 값을 확인하세요.
