@@ -163,7 +163,7 @@
 
 
 * 사용자가 장비와 상호 작용하며 발생된 이벤트는 UIKit에 의해 설정된 특정 포트를 통해 앱에 전달됩니다. 이벤트들은 내부 queue에서 대기하고 있다가 main run loop에 하나씩 전달 됩니다. 
-* 다양한 유형의 이벤트를 iOS 앱에 전달 할 수 있습니다. 가장 일반적인 이벤트에는 터치, 원격 제어, 모션, 가곡도계 및 자이로 스코프 이벤트 등이 있습니가. 각 이벤트에 대한 자세한 내용은 [Event Handling Guid for UIKit Apps](https://developer.apple.com/library/content/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/index.html#//apple_ref/doc/uid/TP40009541)에서 확인 할 수 있습니다.
+* 다양한 유형의 이벤트를 iOS 앱에 전달 할 수 있습니다. 가장 일반적인 이벤트에는 터치, 원격 제어, 모션, 가속도계 및 자이로 스코프 이벤트 등이 있습니가. 각 이벤트에 대한 자세한 내용은 [Event Handling Guid for UIKit Apps](https://developer.apple.com/library/content/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/index.html#//apple_ref/doc/uid/TP40009541)에서 확인 할 수 있습니다.
 
 ---
 
