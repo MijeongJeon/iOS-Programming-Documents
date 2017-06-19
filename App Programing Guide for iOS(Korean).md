@@ -205,21 +205,21 @@
 > 시스템은 기본적으로 앱의 main thread를 생성하는데, 필요에 따라 추가 thread를 생성하여 다른 작업을 수행 할 수 있습니다. iOS 앱의 경우, 직접 thread를 만들고 관리하는 대신 `Grand Central Dispatch(GCD)`, `operation objects`, `asynchronous` 프로그래밍 기법을 사용하는 것이 좋습니다.
 
 * GCD를 이용하면 수행하고 싶은 작업과, 작업의 순서를 정할 수 있지만, 시스템이 CPU에서 작업을 가장 효과적으로 수행할 수 있는 방법을 결정 할 수 있도록 하는 것이 전반적인 성능을 향상시키고, 코드를 단순화 시킬 수 있습니다.
-* Thread와 concurrncy(동시성)를 사용할때 다음 사항을 고려하세요.
+* Thread와 concurrency(동시성)를 사용할때 다음 사항을 고려하세요.
 	* View, Core Animation 그리고 UIKit 클래스와 관련된 작업은 main thread에서 실행되어야 합니다. 
 	* 오래 걸리는 작업은 백그라운드 스레드에서 수행해야합니다. 네트워크 작업을 포함하거나, 파일에 접근하거나, 많은 양의 데이터를 처리할 때는 GCD를 이용하여 비동기로 수행해야합니다.
 	*  GCD 및 operation object를 사용한 작업 방법에 대해서는 [Concurrency Programming Guide](https://developer.apple.com/library/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008091)를 참고하세요.
 
 <a name = "백그라운드실행"></a>
 ## [4. Background Execution](https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/BackgroundExecution/BackgroundExecution.html#//apple_ref/doc/uid/TP40007072-CH4-SW1)
-> 사용자가 앱을 사용하지 않을 경우 시스템은 앱을 백그라운드 상태로 전환시킵니다. 일반적으로 백그라운드 상태는 정지 상태(suspended)로 가는 길입니다. 앱을 정지 시키는 일을 배터리 수명을 향상 시키기는 일이며, 다른 앱이 foreground에서 실행 될수 있는 리소스를 제공해줍니다. 하지만 모든앱이 백그라운드에서 정지되는 것은 아닙니다. 예를 들어 하이킹 앱은 백그라운드에서도 사용자의 위치를 추적해야하며, 오디오 앱은 잠금화면에서도 계속 음악을 재생할 수 있어야 합니다. 이렇게 백그라운드에서 앱을 실행하는 것이 필요하다고  판단되면 iOS는 배터리를 많이 소모하지 않고 효율적으로 수행 할수 있도록 다음과 같은 기술을 제공합니다.
+> 사용자가 앱을 사용하지 않을 경우 시스템은 앱을 백그라운드 상태로 전환시킵니다. 일반적으로 백그라운드 상태는 정지 상태(suspended)로 가는 길입니다. 앱을 정지 시키는 일을 배터리 수명을 향상 시키는 일이며, 다른 앱이 foreground에서 실행 될수 있는 리소스를 제공해줍니다. 하지만 모든앱이 백그라운드에서 정지되는 것은 아닙니다. 예를 들어 하이킹 앱은 백그라운드에서도 사용자의 위치를 추적해야하며, 오디오 앱은 잠금화면에서도 계속 음악을 재생할 수 있어야 합니다. 이렇게 백그라운드에서 앱을 실행하는 것이 필요하다고  판단되면 iOS는 배터리를 많이 소모하지 않고 효율적으로 수행 할수 있도록 다음과 같은 기술을 제공합니다.
 
 * foreground에서 짧은 작업을 하는 앱은 백그라운드로 전환될때 해당 작업을 완료할 시간을 요청할 수 있습니다.
 * foreground에서 다운로드를 시작하는 앱은 다운로드 관리를 시스템에 전할 할 수 있으므로, 다운로드가 되는 동안 앱이 중지되거나 종료되지 않습니다.
 * 특정 유형의 작업을 지원하기 위해 백그라운드에서 실행하는 앱은 하나 이상의 백그라운드 실행 모드에 대한 지원을 선언 할 수 있습니다.
 
 ### Executing Finite-Length Tasks
-> 백그라운드로 이동한 앱이 작업 중인 일을 완료하기 위해 추가적인 시간이 필요한 경우, `UIApplication` 객체의 `beginBackgroundTaskWithName : expirationHandler :` 또는 `beginBackgroundTaskWithExpirationHandler :` 메소드를 호출하여 작업이 완료되기 까지의 추가 시간을 요청 할수 있습니다. 위 메소드 중 하나를 하나를 호출하면 앱은 일시적으로 중지가 지연되고, 작업을 마저 실행 할수 있습니다. 작업이 끝난 앱은 `endBackgroundTask:`메소드를 호출하여 시스템에 작업을 마쳤음을 알립니다.
+> 백그라운드로 이동한 앱이 작업 중인 일을 완료하기 위해 추가적인 시간이 필요한 경우, `UIApplication` 객체의 `beginBackgroundTaskWithName : expirationHandler :` 또는 `beginBackgroundTaskWithExpirationHandler :` 메소드를 호출하여 작업이 완료되기 까지의 추가 시간을 요청 할수 있습니다. 위 메소드 중 하나를 호출하면 앱은 일시적으로 중지가 지연되고, 작업을 마저 실행 할수 있습니다. 작업이 끝난 앱은 `endBackgroundTask:`메소드를 호출하여 시스템에 작업을 마쳤음을 알립니다.
 
 * `expirationHandler :` 에 종료하기 전에 수행해야하는 코드를 추가 할 수 있지만, 이때 실행되는 작업이 너무 오래 걸리지 않아야합니다. 
 * 작업을 처리하는데 남은 시간을 알고 싶다면 `UIApplication`의 `backgroundTimeRemaining` 값을 확인하세요.
@@ -236,7 +236,7 @@
 ---
 
 ### Implemneting Long-Runnig Tasks
-> 구현하는데 많은 시간이 필요한 작업의 경우, 백그라운드에서 실행 될 수있도록 특정 권한을 요청해야합니다. 백그라운드 실행 기능을 위해서는. `Project Setting` - `Capabilities` - `Background Modes` 옵션을 선택해야하며, 이렇게하면 Info.plist 파일에 `UIBackgroundMoes` 키가 추가됩니다. iOS에서는 아래와 같은 특정 유형의 기능만 백그라운드에서 실행 할 수 있습니다.
+> 구현하는데 많은 시간이 필요한 작업의 경우, 백그라운드에서 실행 될 수있도록 특정 권한을 요청해야합니다. 백그라운드 실행 기능을 위해서는. `Project Setting` - `Capabilities` - `Background Modes` 옵션을 선택해야하며, 이렇게하면 Info.plist 파일에 `UIBackgroundMode` 키가 추가됩니다. iOS에서는 아래와 같은 특정 유형의 기능만 백그라운드에서 실행 할 수 있습니다.
 
 	* 음악 플레이어 앱과 같이 백그라운드에서 사용자에게 미디어 콘텐츠를 재생하는 앱
 	* 백그라운드에서 오디오 콘텐츠를 녹음하는 앱
