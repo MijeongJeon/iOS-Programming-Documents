@@ -199,7 +199,7 @@
 	* `applicationWillResignActive:` 앱이 foreground 상태에서 inactive 되는 시점입니다.
 	* `applicationDidEnterBackground:` 앱이 background에서 실행되고 있으며, 언제든지 정지될수 있음을 알립니다.
 	* `applicationWillEnterForeground:` 앱이 background에서 foreground로 진입하고 있지만 아직 active 된 상태는 아닙니다.
-	* `applicationWillTerminate:` 앱이 종료되고 있음을 알리는 메소드 입니하. 하지만 앱이 시스템에 의해 정지되었을 경우에는 호출 되지 않습니다.
+	* `applicationWillTerminate:` 앱이 종료되고 있음을 알리는 메소드 입니다. 하지만 앱이 시스템에 의해 정지되었을 경우에는 호출 되지 않습니다.
 
 ---
 
@@ -258,7 +258,7 @@
 ---
 
 ### Getting the User's Attention While in the Background
->알람은 앱이 중지되었거나 백그라운드에 있을때 사용자의 신선을 끌수 있는 방법입니다. 로컬 알림의 사운드, 배지, 알림 기능을 이용하여 사용자에게 알릴 수 있으며 사용자는 앱을 foreground로 되돌려 놓을지 경정해야합니다. 앱이 이미 foreground에서 실행중인 경우, 로컬 알림은 사용자에게 전달되지 않습니다.
+>알람은 앱이 중지되었거나 백그라운드에 있을때 사용자의 시선을 끌수 있는 방법입니다. 로컬 알림의 사운드, 배지, 알림 기능을 이용하여 사용자에게 알릴 수 있으며 사용자는 앱을 foreground로 되돌려 놓을지 결정해야합니다. 앱이 이미 foreground에서 실행중인 경우, 로컬 알림은 사용자에게 전달되지 않습니다.
 
 * 로컬 알림을 예약하려면 `UILocalNotification` 클래스의 인스턴스를 만들고 매개변수를 구성한 다음  `UIApplication` 클래스의 메소드를 이용해 일정을 예약 할 수 있습니다. 
 * 로컬 알림은 알림의 유형(소리, 알림, 배지) 및 알림 시각에 대한 셋팅을 할 수 있습니다.
