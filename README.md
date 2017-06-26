@@ -653,11 +653,11 @@
 
 * 앱 최적화의 목표는 최대한 효율적으로 가능한 많은 작업을 수행하는 것입니다. Instruments를 사용하여 앱의 알고리즘을 항상 최적화 해야합니다. 그러나 가장 최적화 된 알고리즘 조차도 기기 배터리에 부정적인 영향을 미칠 수 있으므로 코드를 작성할때 다음 지침을 고려하십시오.
 	* Polling이 필요한 작업을 하지 마십시오. Polling 작업은 CPU가 잠자기 모드가 되는 것을 방지 합니다. Polling 대신 NSRunLoop 또는 NSTimer 클래스를 사용하여 필요에 따라 작업을 예약하십시오.
-	* 가능하면 `UIApplication`의 `shared` 객체의 `idleTimerDisabled` 속성을 `flase`로 설정하십시오. ildeTimer는 일정 시간 동안 사용되지 않는 기기의 화면을 끄는 기능을 하는데, 앱 화면을 계속 켜둘 필요가 없는 경우 시스템이 종료시킬 수 있도록 하십시오. 
+	* 가능하면 `UIApplication`의 `shared` 객체의 `idleTimerDisabled` 속성을 `false`로 설정하십시오. IdleTimer는 일정 시간 동안 사용되지 않는 기기의 화면을 끄는 기능을 하는데, 앱 화면을 계속 켜둘 필요가 없는 경우 시스템이 종료시킬 수 있도록 하십시오. 
 	* 가능한 작업을 병합하는 것이 좋습니다. 오랜 시간 동안 작은 chunk로 작업을 수행하는 것 보다 한번에 작업을 수행하는 것이 더 적은 전력을 소비하기 때문입니다.
 	* 디스크에 너무자주 access하지 마십시오. 예를 들어 앱이 상태 정보를 디스크에 저장하는 경우, 상태에 변경이 생길때만 정보를 저장하고 가능하면 변경 사항을 통합하여 너무 빈번하게 변경 사항을 기록하지 않도록 합니다. 
 	* 필요이상으로 빠르게 화면을 그리지 마십시오. 그리기(draw) 작업은 전력이 많이 소모되는 작업입니다. 
-	* `UIAccelerometer` 클래스를 사용하여 가속도계 이벤트를 수신하는 경우, 필료하지 않을때는 이벤트 전달을 비활성화 하십시오. 자세한 내용은 [Event Handling Guide for UIKit Apps](https://developer.apple.com/library/content/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/index.html#//apple_ref/doc/uid/TP40009541)를 참고하십시오.
+	* `UIAccelerometer` 클래스를 사용하여 가속도계 이벤트를 수신하는 경우, 필요하지 않을때는 이벤트 전달을 비활성화 하십시오. 자세한 내용은 [Event Handling Guide for UIKit Apps](https://developer.apple.com/library/content/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/index.html#//apple_ref/doc/uid/TP40009541)를 참고하십시오.
 	* 네트워크로 전송하는 데이터가 많을 수록 많은 전력을 소모하게 되며, 네트워트를 사용하는 작업은 전력 소모에 가장 영향을 많이 기치는 작업입니다. 다음 지침을 따르면 네트워크에 소모되는 시간을 최소화 할 수 있습니다.
 		* 필요한 경우에만 네트워크 서버에 연결하고 해당 서버를 polling하지 마십시오. 
 		* 네트워트에 연결해 작업을 할때는 압축된 데이터 형식을 사용하여 최소량의 데이터를 전송하십시오. 
@@ -678,7 +678,7 @@
 * `didReceiveMemoryWarning`: UIViewController 메소드
 * `UIApplicationDidReceiveMemoryWarningNotification`: 노티피케이션
  
-* 이러한 경고를 받으면 불필요한 메모리를 즉시 해제해야합니다. 사용용하지 않는 거대 데이터 구조가 있는 경우, 해당 구조를 디스크에 저장하고 메모리에서 사본을 제거하십시오.
+* 이러한 경고를 받으면 불필요한 메모리를 즉시 해제해야합니다. 사용하지 않는 거대 데이터 구조가 있는 경우, 해당 구조를 디스크에 저장하고 메모리에서 사본을 제거하십시오.
 
 * 참고: iOS 시뮬레이터의 `Simulate Memory Warning` 명령을 사용하여 메모리 부족 상태의 앱 동작을 테스트 할 수 있습니다.
 
@@ -766,7 +766,7 @@
 * 작업을 백그라운드에서 실행시키면 main thread가 자유롭게 사용자 입력을 처리할 수 있게되며, 이는 앱이 시작/종료될때 특히 중요합니다.
 	* 앱이 실행(launch)될때 main thread가 차단 된 경우 시스템은 실행이 완료되기 전에 앱을 종료(kill)시킬 수 있습니다.
 	* 앱이 종료될때 main thread가 차단되어있으면 사용자의 중요한 데이터를 기록하기 전에 시스템이 앱을 종료(kill)할 수 있습니다.
-	* CGD, operation object, thread에 관한 자세한 정보는 [Concurrency Programming Guide](https://developer.apple.com/library/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008091)를 참고하세요.
+	* GCD, operation object, thread에 관한 자세한 정보는 [Concurrency Programming Guide](https://developer.apple.com/library/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008091)를 참고하세요.
 
 ---
 
